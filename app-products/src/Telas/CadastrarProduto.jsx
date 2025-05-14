@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, FlatList, Keyboard
 import { TextInputMask } from 'react-native-masked-text';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function App() {
+export default function CadastrarProduto() {
   const [nomeProduto, setNomeProduto] = useState("")
   const [precoProduto, setPrecoProduto] = useState()
   const [listaProdutos,setListaProduto]=useState([])
