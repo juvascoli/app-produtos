@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   button: {
-    backgroundColor: '#DDA0DD',
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 19,
@@ -102,7 +101,6 @@ const styles = StyleSheet.create({
     elevation: 4,
     },
   card:{
-    backgroundColor: '#DDA0DD',
     padding: 15,
     borderRadius: 20,
     marginBottom: 70,
