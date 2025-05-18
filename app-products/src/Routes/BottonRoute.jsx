@@ -9,11 +9,11 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator({route}){
     return(
         <Tab.Navigator screenOptions={{headerShown: false}}
-            initialRouteName={route?.params?.initialRouteName || "CadastroProduto"}
+            initialRouteName={route?.params?.initialRouteName || "CadastrarProduto"}
     >
       <Tab.Screen name="CadastrarProduto" component={CadastrarProduto} 
         options={{
-            tabBarIcon: () => <Feather name='CadastroProduto' size={20} />,
+            tabBarIcon: () => <Feather name='shopping-cart' size={20} />,
             tabBarLabel: "Cadastro"
         }}
       />
