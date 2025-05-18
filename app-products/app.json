@@ -4,11 +4,11 @@
     "slug": "app-products",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icone.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icone.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,13 +17,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icone.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.matthewfs.appproducts"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icone.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ff599e28-4b83-466e-b37e-f0b5c277af12"
+      }
     }
   }
 }

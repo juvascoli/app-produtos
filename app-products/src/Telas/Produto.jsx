@@ -171,15 +171,30 @@ export default function CadastrarProduto({ navigation }) {
           <Text style={styles.btnText}>LER QR CODE</Text>
         </TouchableOpacity>
 
-        {cameraAtiva && (
-        <CameraView
-          style={{ width: '100%', height: 300, marginVertical: 20 }}
-          onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
-          barcodeScannerSettings={{
-            barcodeTypes: ['qr'],
-          }}
-        />
+        {cameraAtiva && !scanned && (
+        <View style={styles.cameraContainer}>
+          <CameraView
+            style={StyleSheet.absoluteFillObject}
+            onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
+            barcodeScannerSettings={{
+              barcodeTypes: ['qr'],
+            }}
+          />
+
+          <TouchableOpacity
+          style= {styles.closeCameraButton}
+            onPress={() => {
+              setCameraAtiva(false);
+              setScanned(true);
+           }}
+          >
+            <Feather name="x" size={28} color="#fff" />
+
+            <Text style={styles.btnText}>FECHAR</Text>
+          </TouchableOpacity>
+        </View>
       )}
+      
 
       <FlatList
         data={listaProdutos}
@@ -274,4 +289,21 @@ const styles = StyleSheet.create({
   iconButton: {
     marginLeft: 12,
   },
+  cameraContainer: {
+  flex: 1,
+  width: '100%',
+  position: 'relative',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  backgroundColor: 'black',
+  },
+  closeCameraButton: {
+  position: 'absolute',
+  top: 40,
+  right: 20,
+  backgroundColor: 'rgba(0,0,0,0.6)',
+  padding: 10,
+  borderRadius: 25,
+  zIndex: 10,
+},
 });
