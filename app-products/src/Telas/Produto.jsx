@@ -5,7 +5,10 @@ import { TextInputMask } from 'react-native-masked-text';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Feather } from '@expo/vector-icons';
 
+import { CameraView, useCameraPermissions } from 'expo-camera';
+
 export default function CadastrarProduto({ navigation }) {
+
   const [nomeProduto, setNomeProduto] = useState("");
   const [precoProduto, setPrecoProduto] = useState("");
   const [dataFabricacao, setDataFabricacao] = useState("");
@@ -14,6 +17,29 @@ export default function CadastrarProduto({ navigation }) {
   const [lote, setLote] = useState("");
   const [listaProdutos, setListaProduto] = useState([]);
   const [produtoEditado, setProdutoEditado] = useState(null);
+  const [hasPermission, requestPermission] = useCameraPermissions();
+  const [scanned, setScanned] = useState(false);
+  const [cameraAtiva, setCameraAtiva] = useState(false);
+
+  function handleBarCodeScanned({ type, data }) {
+      setScanned(true);
+      setCameraAtiva(false);
+
+    try {
+      const produtoQR = JSON.parse(data);
+
+      setNomeProduto(produtoQR.nome || '');
+      setPrecoProduto(produtoQR.preco || '');
+      setDataFabricacao(produtoQR.fabricacao || '');
+      setValidade(produtoQR.validade || '');
+      setQuantidade(produtoQR.quantidade || '');
+      setLote(produtoQR.lote || '');
+
+      Alert.alert("Sucesso", "Dados do QR code importados!");
+    } catch (e) {
+      Alert.alert("Erro", "QR Code inválido ou dados incorretos.");
+    }
+  }
 
   useEffect(() => {
     BuscarDados();
@@ -25,7 +51,6 @@ export default function CadastrarProduto({ navigation }) {
     if (await AsyncStorage.getItem("PRODUTOS") != null) {
       produtos = JSON.parse(await AsyncStorage.getItem("PRODUTOS"));
     }
-
 
     const novoProduto = {
       nome: nomeProduto,
@@ -130,6 +155,31 @@ export default function CadastrarProduto({ navigation }) {
       <TouchableOpacity style={styles.btn} onPress={Salvar} activeOpacity={0.8}>
         <Text style={styles.btnText}>{produtoEditado ? "ATUALIZAR" : "CADASTRAR"}</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+          style={[styles.btn, { backgroundColor: '#2A9D8F' }]}
+          onPress={async () => {
+            const { status } = await requestPermission();
+            if (status === 'granted') {
+              setScanned(false);
+              setCameraAtiva(true);
+            } else {
+              Alert.alert("Permissão negada", "Permita o uso da câmera.");
+            }
+          }}
+        >
+          <Text style={styles.btnText}>LER QR CODE</Text>
+        </TouchableOpacity>
+
+        {cameraAtiva && (
+        <CameraView
+          style={{ width: '100%', height: 300, marginVertical: 20 }}
+          onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
+          barcodeScannerSettings={{
+            barcodeTypes: ['qr'],
+          }}
+        />
+      )}
 
       <FlatList
         data={listaProdutos}
