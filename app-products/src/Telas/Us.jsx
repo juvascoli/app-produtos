@@ -16,7 +16,7 @@ const Equipe = ({ imageSource, name, rm, githubUrl }) => (
 export default function Us() {
   return (
     <ImageBackground 
-    source={require('../../assets/bg.png')}
+    source={require('../../assets/bg.jpg')}
     style={styles.container}>
       <Text style={styles.title}>Desenvolvedores</Text>
 

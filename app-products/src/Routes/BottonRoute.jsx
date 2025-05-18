@@ -1,4 +1,3 @@
-import React from 'react';
 import Us from '../Telas/Us';
 import Home from '../Telas/Home';
 
