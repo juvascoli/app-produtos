@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 export default function TabNavigator({route}){
     return(
         <Tab.Navigator screenOptions={{headerShown: false}}
-            initialRouteName={route?.params?.initialRouteName || "Us"}
+            initialRouteName={route?.params?.initialRouteName || "Home"}
     >
 
       <Tab.Screen

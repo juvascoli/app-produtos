@@ -1,9 +1,12 @@
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Feather } from '@expo/vector-icons'; 
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
+      
+      <Image source={require('../../assets/icone.png')} style={styles.image} />
+
       <View style={styles.welcome}>
         <Text style={styles.title}>Bem-vindo!</Text>
         <Text style={styles.subtitle}>Cadastre um novo produto abaixo</Text>
@@ -65,4 +68,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
+  image: {
+  width: 100,
+  height: 100,
+  resizeMode: 'contain',
+  marginBottom: 20,
+},
 });
