@@ -10,16 +10,16 @@ export default function StackNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen  
-        name="Home" 
+        name="Home"
         component={TabNavigator}
         options={{
           headerTitle: '', 
           headerLeft: () => (
             <Feather 
               name="shopping-bag" 
-              size={24} 
+              size={22} 
               color="black"
-              style={{ marginRight: 9 }}
+              style={{ marginLeft: 10 }} 
             />
           ),
         }}
