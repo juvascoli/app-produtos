@@ -18,7 +18,7 @@ export default function Us() {
     <ImageBackground 
     source={require('../../assets/bg.png')}
     style={styles.container}>
-      <Text style={styles.title}>Quem somos?</Text>
+      <Text style={styles.title}>Desenvolvedores</Text>
 
       <ScrollView contentContainerStyle={styles.membrosContainer}>
         <Equipe 
@@ -35,15 +35,7 @@ export default function Us() {
         />
 
       </ScrollView>
-      <View style={styles.card}>
-        <Text style={styles.cardTitle}>Propósito</Text>
-        <Text>
-        A gente acredita que todo animal de rua merece um lar. 
-        Por isso, trabalhamos para conectar os cães que estão em abrigos 
-        com pessoas que estejam procurando por um pet pra chamar de seu.
-        </Text>
 
-      </View>
 
     </ImageBackground>
   );
@@ -66,7 +58,6 @@ const styles = StyleSheet.create({
   },
   membrosContainer: {
     flex: 1,
-    flexDirection: 'row',
     alignItems: "center",
     justifyContent: 'center'
   },
@@ -89,6 +80,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   button: {
+    backgroundColor: '#6A0DAD',
     paddingVertical: 10,
     paddingHorizontal: 50,
     borderRadius: 19,
@@ -98,24 +90,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 6,
     shadowOffset: { width: 0, height: 2 },
-    elevation: 4,
+    elevation: 4
     },
-  card:{
-    padding: 15,
-    borderRadius: 20,
-    marginBottom: 70,
-    marginHorizontal: 30,
-    color: '#333', 
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 4,
-  },
-  cardTitle:{
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 8
-  }
 
 });

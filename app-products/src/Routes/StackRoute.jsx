@@ -1,35 +1,31 @@
 import Us from "../Telas/Us";
+import Produto from "../Telas/Produto";
 import TabNavigator from "./BottonRoute";
-import { View, Text, StyleSheet, Image } from 'react-native';
-
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Feather from 'react-native-vector-icons/Feather';
 
+const Stack = createNativeStackNavigator();
 
-const Stack = createNativeStackNavigator()
-
-export default function StackNavigator(){
+export default function StackNavigator() {
   return (
-      <Stack.Navigator 
-      screenOptions={{ headerTitle: () => (
-        <Image
-          source={require('../../assets/bg.png')}
-          style={styles.headerLogo}
-        /> 
-      ),
-      headerTitleAlign: 'center'}}> 
-        <Stack.Screen name="Home" component={TabNavigator}/>
-        <Stack.Screen name="Us" component={Us} />
-      </Stack.Navigator>
-  )
+    <Stack.Navigator>
+      <Stack.Screen  
+        name="Home" 
+        component={TabNavigator}
+        options={{
+          headerTitle: '', 
+          headerLeft: () => (
+            <Feather 
+              name="shopping-bag" 
+              size={24} 
+              color="black"
+              style={{ marginRight: 9 }}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen name="Us" component={Us} />
+      <Stack.Screen name="Produto" component={Produto} />
+    </Stack.Navigator>
+  );
 }
-
- 
-const styles = StyleSheet.create({
-  headerLogo:{
-    width:120,
-    height: 50,
-    resizeMode: 'contain'
-
-  }
-
-})
